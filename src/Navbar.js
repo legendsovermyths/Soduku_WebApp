@@ -9,8 +9,15 @@ function Navbar() {
         <h1>Sudoku</h1>
       </div>
       <div className='Navbar__Sidemenu'>
-        <Button variant='outlined'>Play</Button>
-        <Button variant='outlined'>Solve</Button>
+        <Button variant='contained' color='primary' disableElevation>
+          Play
+        </Button>
+        <Button variant='contained' color='primary' disableElevation>
+          Solve
+        </Button>
+        <Button variant='contained' color='primary' disableElevation>
+          P vs P
+        </Button>
       </div>
     </div>
   );
