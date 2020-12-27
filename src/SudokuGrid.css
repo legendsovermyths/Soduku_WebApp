@@ -1,56 +1,57 @@
-li:nth-child(n):nth-child(-n + 9) {
-  border-top-width: 4px;
-}
-li:nth-child(n + 73):nth-child(-n + 81) {
-  border-bottom-width: 4px;
-}
-li:nth-child(3n) {
-  border-right-width: 4px;
-}
-li:nth-child(9n + 1) {
-  border-left-width: 4px;
-}
-li:nth-child(n + 19):nth-child(-n + 27) {
-  border-bottom-width: 4px;
-}
-li:nth-child(n + 46):nth-child(-n + 54) {
-  border-bottom-width: 4px;
+#game {
+  width: 600px;
+  height: 600px;
+
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-left: 30px;
+
+  position: absolute;
+  display: block;
+  background-color: white;
 }
 
-ul {
-  display: grid;
-  grid-template-columns: repeat(9, 2.8vw);
-  grid-template-rows: repeat(9, 2.8vw);
-  justify-content: center;
-  align-content: center;
-  grid-gap: 0rem;
-  list-style: none;
-  margin: 0 0 2vw;
-  padding: 0;
-  font-size: calc(1vw + 10px);
+#grid {
+  width: 378px;
+  height: 395px;
+
+  margin-left: 20px;
+  margin-top: 50px;
+
+  border: 3px solid #000000;
+  border-collapse: collapse;
 }
-li {
-  margin: 0;
-  padding: 0;
+
+.cell input {
+  display: inline-block;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+
   text-align: center;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 30px;
 }
-li:hover {
-  background-color: blue;
+table {
+  margin: 1em auto;
 }
-
-.note {
-  background: #ddd;
-  font-family: monospace;
-  padding: 2em 5em;
-  font-size: 120%;
-  order: -1;
+td {
+  height: 30px;
+  width: 30px;
+  border: 1px solid;
+  text-align: center;
 }
-@supports (display: grid) {
-  .note {
-    display: none;
-  }
+td:first-child {
+  border-left: solid;
+}
+td:nth-child(3n) {
+  border-right: solid;
+}
+tr:first-child {
+  border-top: solid;
+}
+tr:nth-child(3n) td {
+  border-bottom: solid;
 }
