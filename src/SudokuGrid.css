@@ -4,7 +4,7 @@
 
   margin-top: 20px;
   margin-bottom: 100px;
-  margin-left: 30px;
+  margin-left: 20px;
 
   position: absolute;
   display: block;
@@ -13,12 +13,13 @@
 
 #grid {
   width: 378px;
-  height: 395px;
+  height: 375px;
 
   margin-left: 20px;
   margin-top: 50px;
 
   border: 3px solid #000000;
+
   border-collapse: collapse;
 }
 
@@ -28,30 +29,31 @@
   border: none;
   outline: none;
   background-color: transparent;
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
 
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
 }
 table {
   margin: 1em auto;
 }
 td {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border: 1px solid;
+  border-color: grey;
   text-align: center;
 }
 td:first-child {
-  border-left: solid;
+  border-left: 2px solid;
 }
 td:nth-child(3n) {
-  border-right: solid;
+  border-right: 2px solid;
 }
 tr:first-child {
-  border-top: solid;
+  border-top: 2px solid;
 }
 tr:nth-child(3n) td {
-  border-bottom: solid;
+  border-bottom: 2px solid;
 }

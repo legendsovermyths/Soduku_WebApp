@@ -3,7 +3,7 @@ import React from "react";
 import "./SudokuGrid.css";
 function SudokuGrid() {
   return (
-    <div>
+    <div class='SudokuGrid'>
       <table id='grid' border='1'>
         <tr class='row'>
           <td class='cell'>
