@@ -38,12 +38,17 @@
 table {
   margin: 1em auto;
 }
+
 td {
   height: 40px;
   width: 40px;
   border: 1px solid;
   border-color: grey;
   text-align: center;
+  font-size: 40px;
+}
+td:hover {
+  background-color: #f8f1f1;
 }
 td:first-child {
   border-left: 2px solid;

@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+.sudokubar {
+  display: flex;
+  justify-content: space-around;
+}
