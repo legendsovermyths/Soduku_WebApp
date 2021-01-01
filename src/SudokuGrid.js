@@ -11,6 +11,7 @@ function SudokuGrid() {
   grid2 = fillDiagonal(grid2);
   sodokoSolver(grid2);
   removeKdigits(9, grid2);
+  console.log(grid2);
   const [grid, setGrid] = useState(grid2);
   return (
     <div class='SudokuGrid'>
@@ -21,9 +22,18 @@ function SudokuGrid() {
               <input
                 type='text'
                 maxlength='1'
-                value={grid[0][0]}
+                placeholder={
+                  grid[Math.floor(item / 9)][Math.floor(item % 9)] != 0
+                    ? grid[Math.floor(item / 9)][Math.floor(item % 9)]
+                    : ""
+                }
                 id={index}
                 key={item}
+                disabled={
+                  grid[Math.floor(item / 9)][Math.floor(item % 9)] != 0
+                    ? true
+                    : false
+                }
               />
             </td>
             <td class='cell'>
