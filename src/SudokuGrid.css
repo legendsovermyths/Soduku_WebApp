@@ -22,7 +22,10 @@
 
   border-collapse: collapse;
 }
-
+.Game {
+  display: flex;
+  justify-content: space-around;
+}
 .cell input {
   display: inline-block;
 
