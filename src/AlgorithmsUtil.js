@@ -70,9 +70,9 @@ const removeKdigits = function removeKDigits(k, sudokuGrid) {
     var cellId = Math.floor(Math.random() * 81);
     var row = Math.floor(cellId / 9);
     var col = Math.floor(cellId % 9);
-    if (col !== 0) {
-      col = col - 1;
-    }
+    // if (col !== 0) {
+    //   col = col - 1;
+    // }
     if (sudokuGrid[row][col] !== 0) {
       count--;
       sudokuGrid[row][col] = 0;
