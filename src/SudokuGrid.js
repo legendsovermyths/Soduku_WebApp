@@ -23,33 +23,138 @@ function SudokuGrid() {
                 type='text'
                 maxlength='1'
                 placeholder={
-                  grid[Math.floor(item / 9)][Math.floor(item % 9)] != 0
+                  grid[Math.floor(item / 9)][Math.floor(item % 9)] !== 0
                     ? grid[Math.floor(item / 9)][Math.floor(item % 9)]
                     : ""
                 }
                 id={index}
                 key={item}
                 disabled={
-                  grid[Math.floor(item / 9)][Math.floor(item % 9)] != 0
+                  grid[Math.floor(item / 9)][Math.floor(item % 9)] !== 0
                     ? true
                     : false
                 }
               />
             </td>
             <td class='cell'>
-              <input type='text' maxlength='1' id={item + 1} key={item + 1} />
+              <input
+                type='text'
+                placeholder={
+                  grid[Math.floor((item + 1) / 9)][
+                    Math.floor((item + 1) % 9)
+                  ] !== 0
+                    ? grid[Math.floor((item + 1) / 9)][
+                        Math.floor((item + 1) % 9)
+                      ]
+                    : ""
+                }
+                maxlength='1'
+                id={item + 1}
+                key={item + 1}
+                disabled={
+                  grid[Math.floor((item + 1) / 9)][
+                    Math.floor((item + 1) % 9)
+                  ] !== 0
+                    ? true
+                    : false
+                }
+              />
             </td>
             <td class='cell'>
-              <input type='text' maxlength='1' id={item + 2} key={item + 2} />
+              <input
+                placeholder={
+                  grid[Math.floor((item + 2) / 9)][
+                    Math.floor((item + 2) % 9)
+                  ] !== 0
+                    ? grid[Math.floor((item + 2) / 9)][
+                        Math.floor((item + 2) % 9)
+                      ]
+                    : ""
+                }
+                type='text'
+                maxlength='1'
+                id={item + 2}
+                key={item + 2}
+                disabled={
+                  grid[Math.floor((item + 2) / 9)][
+                    Math.floor((item + 2) % 9)
+                  ] !== 0
+                    ? true
+                    : false
+                }
+              />
             </td>
             <td class='cell'>
-              <input type='text' maxlength='1' id={item + 3} key={item + 3} />
+              <input
+                type='text'
+                maxlength='1'
+                placeholder={
+                  grid[Math.floor((item + 3) / 9)][
+                    Math.floor((item + 3) % 9)
+                  ] !== 0
+                    ? grid[Math.floor((item + 3) / 9)][
+                        Math.floor((item + 3) % 9)
+                      ]
+                    : ""
+                }
+                id={item + 3}
+                key={item + 3}
+                disabled={
+                  grid[Math.floor((item + 3) / 9)][
+                    Math.floor((item + 3) % 9)
+                  ] !== 0
+                    ? true
+                    : false
+                }
+              />
             </td>
             <td class='cell'>
-              <input type='text' maxlength='1' id={item + 4} key={item + 4} />
+              <input
+                type='text'
+                placeholder={
+                  grid[Math.floor((item + 4) / 9)][
+                    Math.floor((item + 4) % 9)
+                  ] !== 0
+                    ? grid[Math.floor((item + 4) / 9)][
+                        Math.floor((item + 4) % 9)
+                      ]
+                    : ""
+                }
+                maxlength='1'
+                id={item + 4}
+                key={item + 4}
+                disabled={
+                  grid[Math.floor((item + 4) / 9)][
+                    Math.floor((item + 4) % 9)
+                  ] !== 0
+                    ? true
+                    : false
+                }
+              />
             </td>
             <td class='cell'>
-              <input type='text' maxlength='1' id={item + 5} key={item + 5} />
+              <input
+                type='text'
+                placeholder={
+                  grid[Math.floor((item + 5) / 9)][
+                    Math.floor((item + 5) % 9)
+                  ] !== 0
+                    ? grid[Math.floor((item + 5) / 9)][
+                        Math.floor((item + 5) % 9)
+                      ]
+                    : ""
+                }
+                maxlength='1'
+                id={item + 5}
+                key={item + 5}
+                disabled={
+                  grid[Math.floor((item + 5) / 9)][
+                    Math.floor((item + 5) % 9)
+                  ] !== 0
+                    ? true
+                    : false
+                }
+              />
             </td>
             <td class='cell'>
               <input type='text' maxlength='1' id={item + 6} key={item + 6} />
