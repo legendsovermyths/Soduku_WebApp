@@ -22,6 +22,9 @@
 
   border-collapse: collapse;
 }
+.button {
+  margin-top: 20vh !important;
+}
 .Game {
   display: flex;
   justify-content: space-around;

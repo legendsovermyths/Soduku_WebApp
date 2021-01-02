@@ -13,8 +13,7 @@ function SudokuGrid() {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)];
   }
   function displayAnswer() {
-    console.log("I am Pressed!");
-
+    sodokoSolver(solution);
     setGrid(solution);
   }
   var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
@@ -26,6 +25,7 @@ function SudokuGrid() {
   console.log(grid2);
   solution = [...grid2];
   console.log(solution);
+  removeKdigits(51, grid2);
   console.log(grid2);
 
   const [grid, setGrid] = useState(grid2);
@@ -167,6 +167,7 @@ function SudokuGrid() {
       </div>
       <div>
         <Button
+          className='button'
           onClick={displayAnswer}
           variant='contained'
           color='primary'
