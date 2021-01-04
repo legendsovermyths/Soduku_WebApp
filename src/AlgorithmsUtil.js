@@ -79,7 +79,17 @@ const removeKdigits = function removeKDigits(k, sudokuGrid) {
     }
   }
 };
+const generateSudoku = function generateSudoku(grid, k) {
+  fillDiagonal(grid);
+  sodokoSolver(grid);
+  removeKdigits(k, grid);
+  return grid;
+};
+const solveSudoku = function (grid) {
+  sodokoSolver(grid);
+  return grid;
+};
 // let array = Array(9)
 //   .fill()
 //   .map(() => Array(9).fill(0));
-export { fillDiagonal, sodokoSolver, removeKdigits };
+export { generateSudoku, solveSudoku, sodokoSolver };

@@ -1,34 +1,28 @@
 // style={"border-collapse: collapse;"}
 import React, { useState } from "react";
-import { fillDiagonal, sodokoSolver, removeKdigits } from "./AlgorithmsUtil";
 import Button from "@material-ui/core/Button";
 import "./SudokuGrid.css";
+import { solveSudoku } from "./AlgorithmsUtil";
 
-function SudokuGrid() {
-  var solution;
+function SudokuGrid(props) {
+  const [grid, setGrid] = useState(props.grid);
+  var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
+
   function displayNumberIsZero(grid, index) {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)] === 0;
   }
+
   function displayNumber(grid, index) {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)];
   }
+
   function displayAnswer() {
-    sodokoSolver(solution);
+    let solution = [...props.grid];
+    solveSudoku(solution);
+    console.log(solution);
     setGrid(solution);
   }
-  var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
-  var grid2 = Array(9)
-    .fill()
-    .map(() => Array(9).fill(0));
-  grid2 = fillDiagonal(grid2);
-  sodokoSolver(grid2);
-  console.log(grid2);
-  solution = [...grid2];
-  console.log(solution);
-  removeKdigits(51, grid2);
-  console.log(grid2);
 
-  const [grid, setGrid] = useState(grid2);
   return (
     <div className='Game'>
       <div className='SudokuGrid'>
@@ -172,7 +166,7 @@ function SudokuGrid() {
           variant='contained'
           color='primary'
           disableElevation>
-          Solve
+          SOLVE
         </Button>
       </div>
     </div>
