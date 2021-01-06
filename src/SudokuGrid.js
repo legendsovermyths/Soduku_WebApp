@@ -2,10 +2,16 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./SudokuGrid.css";
-import { solveSudoku } from "./AlgorithmsUtil";
-
-function SudokuGrid(props) {
-  const [grid, setGrid] = useState(props.grid);
+import { generateSudoku, solveSudoku } from "./AlgorithmsUtil";
+function generateInitialSudoku() {
+  var grid = Array(9)
+    .fill()
+    .map(() => Array(9).fill(0));
+  grid = generateSudoku(grid, 59);
+  return grid;
+}
+function SudokuGrid() {
+  const [grid, setGrid] = useState(generateInitialSudoku());
   var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
 
   function displayNumberIsZero(grid, index) {
@@ -16,13 +22,19 @@ function SudokuGrid(props) {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)];
   }
 
-  function displayAnswer() {
-    let solution = [...props.grid];
+  function displayAnswer(grid) {
+    let solution = [...grid];
     solveSudoku(solution);
     console.log(solution);
     setGrid(solution);
   }
-
+  function makeNewGrid() {
+    var newGrid = Array(9)
+      .fill()
+      .map(() => Array(9).fill(0));
+    newGrid = generateSudoku(newGrid, 51);
+    setGrid(newGrid);
+  }
   return (
     <div className='Game'>
       <div className='SudokuGrid'>
@@ -159,15 +171,36 @@ function SudokuGrid(props) {
           ))}
         </table>
       </div>
-      <div>
-        <Button
-          className='button'
-          onClick={displayAnswer}
-          variant='contained'
-          color='primary'
-          disableElevation>
-          SOLVE
-        </Button>
+      <div className='buttonContainer'>
+        <div>
+          <Button
+            className='button'
+            onClick={() => displayAnswer(grid)}
+            variant='contained'
+            color='primary'
+            disableElevation>
+            SOLVE
+          </Button>
+        </div>
+        <div>
+          <Button
+            className='button'
+            onClick={makeNewGrid}
+            variant='contained'
+            color='primary'
+            disableElevation>
+            NEW GRID
+          </Button>
+        </div>
+        <div>
+          <Button
+            className='button'
+            variant='contained'
+            color='primary'
+            disableElevation>
+            CHECK
+          </Button>
+        </div>
       </div>
     </div>
   );

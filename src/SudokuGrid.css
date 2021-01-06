@@ -4,18 +4,14 @@
 
   margin-top: 20px;
   margin-bottom: 100px;
-  margin-left: 20px;
 
   position: absolute;
   display: block;
   background-color: white;
 }
-
 #grid {
   width: 378px;
   height: 375px;
-
-  margin-left: 20px;
   margin-top: 50px;
 
   border: 3px solid #000000;
@@ -24,10 +20,14 @@
 }
 .button {
   margin-top: 20vh !important;
+  margin-left: 50px !important;
+  margin-right: 50px !important;
 }
 .Game {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 17vw;
+  padding-right: 5vw;
 }
 .cell input {
   display: inline-block;
@@ -40,6 +40,12 @@
 
   text-align: center;
   font-size: 40px;
+}
+.buttonContainer {
+  padding: 80px;
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
 }
 table {
   margin: 1em auto;
