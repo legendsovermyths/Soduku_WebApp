@@ -7,7 +7,7 @@ function generateInitialSudoku() {
   var grid = Array(9)
     .fill()
     .map(() => Array(9).fill(0));
-  grid = generateSudoku(grid, 59);
+  grid = generateSudoku(grid, 46);
   return grid;
 }
 function SudokuGrid() {
