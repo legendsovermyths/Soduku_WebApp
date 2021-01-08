@@ -42,10 +42,27 @@
   font-size: 40px;
 }
 .buttonContainer {
-  padding: 80px;
+  padding-bottom: 80px;
   display: flex;
   justify-content: space-around;
-  width: 40vw;
+  width: 30vw;
+  margin-bottom: 12vh;
+}
+.SudokuSideItems {
+  border: solid;
+  border-radius: 20px;
+  margin-right: 5vw;
+  height: 68vh;
+  margin-top: 6vh;
+  background-color: white;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+.Timer {
+  padding-left: 6.5vw;
+  margin-right: 6vw;
+  margin-top: 5vh;
 }
 table {
   margin: 1em auto;

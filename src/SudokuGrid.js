@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./SudokuGrid.css";
 import { generateSudoku, solveSudoku } from "./AlgorithmsUtil";
+import Timer from "./Timer";
 function generateInitialSudoku() {
   var grid = Array(9)
     .fill()
@@ -171,35 +172,40 @@ function SudokuGrid() {
           ))}
         </table>
       </div>
-      <div className='buttonContainer'>
-        <div>
-          <Button
-            className='button'
-            onClick={() => displayAnswer(grid)}
-            variant='contained'
-            color='primary'
-            disableElevation>
-            SOLVE
-          </Button>
+      <div className='SudokuSideItems'>
+        <div className='Timer'>
+          <Timer />
         </div>
-        <div>
-          <Button
-            className='button'
-            onClick={makeNewGrid}
-            variant='contained'
-            color='primary'
-            disableElevation>
-            NEW GRID
-          </Button>
-        </div>
-        <div>
-          <Button
-            className='button'
-            variant='contained'
-            color='primary'
-            disableElevation>
-            CHECK
-          </Button>
+        <div className='buttonContainer'>
+          <div className='Container'>
+            <Button
+              className='button'
+              onClick={() => displayAnswer(grid)}
+              variant='contained'
+              color='primary'
+              disableElevation>
+              SOLVE
+            </Button>
+          </div>
+          <div className='Container'>
+            <Button
+              className='button'
+              onClick={makeNewGrid}
+              variant='contained'
+              color='primary'
+              disableElevation>
+              NEW GRID
+            </Button>
+          </div>
+          <div className='Container'>
+            <Button
+              className='button'
+              variant='contained'
+              color='primary'
+              disableElevation>
+              CHECK
+            </Button>
+          </div>
         </div>
       </div>
     </div>
