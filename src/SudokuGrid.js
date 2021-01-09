@@ -4,38 +4,82 @@ import Button from "@material-ui/core/Button";
 import "./SudokuGrid.css";
 import { generateSudoku, solveSudoku } from "./AlgorithmsUtil";
 import Timer from "./Timer";
-function generateInitialSudoku() {
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import { withStyles } from "@material-ui/core/styles";
+
+const generateInitialSudoku = () => {
   var grid = Array(9)
     .fill()
     .map(() => Array(9).fill(0));
   grid = generateSudoku(grid, 46);
   return grid;
-}
+};
 function SudokuGrid() {
+  const [anchorEl, setAnchorEl] = useState(null);
   const [grid, setGrid] = useState(generateInitialSudoku());
   var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
 
-  function displayNumberIsZero(grid, index) {
+  const displayNumberIsZero = (grid, index) => {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)] === 0;
-  }
+  };
 
-  function displayNumber(grid, index) {
+  const displayNumber = (grid, index) => {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)];
-  }
+  };
 
-  function displayAnswer(grid) {
+  const displayAnswer = (grid) => {
     let solution = [...grid];
     solveSudoku(solution);
     console.log(solution);
     setGrid(solution);
-  }
-  function makeNewGrid() {
+    setAnchorEl(null);
+  };
+  const makeNewGrid = () => {
     var newGrid = Array(9)
       .fill()
       .map(() => Array(9).fill(0));
     newGrid = generateSudoku(newGrid, 51);
     setGrid(newGrid);
-  }
+    setAnchorEl(null);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const StyledMenu = withStyles({
+    paper: {
+      border: "1px solid #d3d4d5",
+    },
+  })((props) => (
+    <Menu
+      elevation={0}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "center",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "center",
+      }}
+      {...props}
+    />
+  ));
+  const StyledMenuItem = withStyles((theme) => ({
+    root: {
+      "&:focus": {
+        backgroundColor: theme.palette.primary.main,
+        "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+          color: theme.palette.common.white,
+        },
+      },
+    },
+  }))(MenuItem);
   return (
     <div className='Game'>
       <div className='SudokuGrid'>
@@ -173,39 +217,50 @@ function SudokuGrid() {
         </table>
       </div>
       <div className='SudokuSideItems'>
+        <div className='optionMenu'>
+          <Button
+            style={{
+              maxWidth: "280px",
+              maxHeight: "70px",
+              minWidth: "280px",
+              minHeight: "70px",
+              fontSize: "16px",
+              borderRadius: "15px",
+            }}
+            aria-controls='customized-menu'
+            aria-haspopup='true'
+            variant='contained'
+            color='primary'
+            onClick={handleClick}>
+            New Game
+          </Button>
+          <StyledMenu
+            id='customized-menu'
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}>
+            <StyledMenuItem
+              style={{
+                maxWidth: "280px",
+                maxHeight: "50px",
+                minWidth: "280px",
+                minHeight: "50px",
+                fontSize: "18px",
+              }}
+              onClick={() => displayAnswer(grid)}>
+              <ListItemText primary='Solve' />
+            </StyledMenuItem>
+            <StyledMenuItem onClick={makeNewGrid}>
+              <ListItemText primary='New Grid' />
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <ListItemText primary='Check' />
+            </StyledMenuItem>
+          </StyledMenu>
+        </div>
         <div className='Timer'>
           <Timer />
-        </div>
-        <div className='buttonContainer'>
-          <div className='Container'>
-            <Button
-              className='button'
-              onClick={() => displayAnswer(grid)}
-              variant='contained'
-              color='primary'
-              disableElevation>
-              SOLVE
-            </Button>
-          </div>
-          <div className='Container'>
-            <Button
-              className='button'
-              onClick={makeNewGrid}
-              variant='contained'
-              color='primary'
-              disableElevation>
-              NEW GRID
-            </Button>
-          </div>
-          <div className='Container'>
-            <Button
-              className='button'
-              variant='contained'
-              color='primary'
-              disableElevation>
-              CHECK
-            </Button>
-          </div>
         </div>
       </div>
     </div>

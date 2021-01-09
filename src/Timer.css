@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
-.app {
-  border: 2px solid;
-  border-radius: 20px;
-}
+
 body {
   margin: 0;
   font-family: "Quicksand", sans-serif;
-  background-color: #eceff1;
+  background-color: white;
   color: #010b40;
 }
 h1 {
@@ -30,7 +27,7 @@ p {
   background-color: transparent;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   width: 292px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   height: 130px;
   top: 110px;
   left: 48%;

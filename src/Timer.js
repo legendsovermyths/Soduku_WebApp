@@ -1,15 +1,14 @@
-import React, { useState, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
+import React, { useState, useRef, useEffect } from "react";
 import "./Timer.css";
-const element = <FontAwesomeIcon icon={faClock} />;
 
 const Timer = () => {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const increment = useRef(null);
-
+  useEffect(() => {
+    handleStart();
+  }, []);
   const handleStart = () => {
     setIsActive(true);
     setIsPaused(true);
@@ -48,7 +47,7 @@ const Timer = () => {
 
   return (
     <div className='app'>
-      <h1>{element} </h1>
+      {/* <h1>{element} </h1> */}
       <div className='stopwatch-card'>
         <p>{formatTime()}</p>
         <div className='buttons'>

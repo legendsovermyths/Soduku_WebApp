@@ -12,7 +12,7 @@ const shuffle = function shuffle(array) {
 
   return array;
 };
-const fillDiagonal = function fillDiagonal(SudokuGrid) {
+const fillDiagonal = (SudokuGrid) => {
   const array1 = shuffle(numbers);
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
@@ -70,26 +70,20 @@ const removeKdigits = function removeKDigits(k, sudokuGrid) {
     var cellId = Math.floor(Math.random() * 81);
     var row = Math.floor(cellId / 9);
     var col = Math.floor(cellId % 9);
-    // if (col !== 0) {
-    //   col = col - 1;
-    // }
     if (sudokuGrid[row][col] !== 0) {
       count--;
       sudokuGrid[row][col] = 0;
     }
   }
 };
-const generateSudoku = function generateSudoku(grid, k) {
+const generateSudoku = (grid, k) => {
   fillDiagonal(grid);
   sodokoSolver(grid);
   removeKdigits(k, grid);
   return grid;
 };
-const solveSudoku = function (grid) {
+const solveSudoku = (grid) => {
   sodokoSolver(grid);
   return grid;
 };
-// let array = Array(9)
-//   .fill()
-//   .map(() => Array(9).fill(0));
 export { generateSudoku, solveSudoku, sodokoSolver };
