@@ -40,6 +40,7 @@
   width: 300px;
 }
 .SudokuSideItems {
+  margin-left: 10px;
   margin-right: auto;
   height: 68vh;
   margin-top: 6vh;

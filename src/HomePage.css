@@ -1,0 +1,55 @@
+.homePage__top {
+  display: flex;
+  justify-content: space-around;
+}
+.homePage__top-right {
+  padding-left: 17vw;
+  margin-right: 6vw;
+  text-align: justify;
+  writing-mode: horizontal-tb;
+}
+
+.homePage__top-right > p {
+  font-size: 20px;
+  writing-mode: horizontal-tb;
+}
+.homePage__top-left {
+  padding-right: 27vw;
+  text-align: justify;
+}
+.homePage__top-left > p {
+  font-size: 20px;
+  writing-mode: horizontal-tb;
+  text-align: justify;
+}
+.homePage__middle {
+  margin-left: 17vw;
+  padding-right: 27vw;
+}
+.homePage__middle > p {
+  font-size: 20px;
+}
+.homePage__middle-rules {
+  padding: 2px;
+  background-color: #f3f6fa;
+}
+.homePage__middle-rules > ul > li > p {
+  font-size: 18px;
+}
+.homePage__bottom {
+  margin-top: 40px;
+  margin-left: 17vw;
+  padding-right: 27vw;
+  margin-bottom: 50px;
+}
+.homePage__bottom > p {
+  font-size: 20px;
+}
+.homePage__bottom-tips {
+  padding: 2px;
+  background-color: #f3f6fa;
+  margin-bottom: 20px;
+}
+.homePage__bottom-tips > ul > li > p {
+  font-size: 18px;
+}
