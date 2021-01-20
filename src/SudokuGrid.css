@@ -12,7 +12,6 @@
 #grid {
   width: 378px;
   height: 375px;
-  margin-top: 50px;
 
   border: 3px solid #000000;
 
@@ -38,6 +37,7 @@
 }
 .optionMenu {
   width: 300px;
+  margin-top: 50px;
 }
 .SudokuSideItems {
   margin-left: 10px;
@@ -47,6 +47,9 @@
   align-items: center;
   align-content: center;
   flex-direction: column;
+}
+.SudokuGrid__difficulty {
+  margin-top: 30px;
 }
 .Timer {
   margin-right: auto;

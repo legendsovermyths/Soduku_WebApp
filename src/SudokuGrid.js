@@ -8,6 +8,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
+import { FormControl, Select } from "@material-ui/core";
 
 const generateInitialSudoku = () => {
   var grid = Array(9)
@@ -16,10 +17,44 @@ const generateInitialSudoku = () => {
   grid = generateSudoku(grid, 46);
   return grid;
 };
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    "&:focus": {
+      backgroundColor: theme.palette.primary.main,
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
+const StyledMenu = withStyles({
+  paper: {
+    border: "1px solid #d3d4d5",
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+));
+
 function SudokuGrid() {
+  const [difficulty, setDifficulty] = useState("Difficulty");
   const [anchorEl, setAnchorEl] = useState(null);
   const [grid, setGrid] = useState(generateInitialSudoku());
   var arr = [0, 9, 18, 27, 36, 45, 54, 63, 72];
+  var DifficultyArr = ["Easy", "Medium", "Hard"];
 
   const displayNumberIsZero = (grid, index) => {
     return grid[Math.floor(index / 9)][Math.floor(index % 9)] === 0;
@@ -36,13 +71,37 @@ function SudokuGrid() {
     setGrid(solution);
     setAnchorEl(null);
   };
-  const makeNewGrid = () => {
+
+  const changeDifficulty = (e) => {
+    setDifficulty(e.target.value);
+    makeNewGrid(e.target.value);
+  };
+
+  const makeNewGrid = (difficulty) => {
+    console.log(difficulty);
     var newGrid = Array(9)
       .fill()
       .map(() => Array(9).fill(0));
-    newGrid = generateSudoku(newGrid, 51);
-    setGrid(newGrid);
-    setAnchorEl(null);
+    switch (difficulty) {
+      case "Easy":
+        newGrid = generateSudoku(newGrid, 31);
+        setGrid(newGrid);
+        setAnchorEl(null);
+        break;
+      case "Medium":
+        newGrid = generateSudoku(newGrid, 45);
+        setGrid(newGrid);
+        setAnchorEl(null);
+        break;
+      case "Hard":
+        newGrid = generateSudoku(newGrid, 55);
+        setGrid(newGrid);
+        setAnchorEl(null);
+        break;
+
+      default:
+        break;
+    }
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -51,38 +110,24 @@ function SudokuGrid() {
     setAnchorEl(null);
   };
 
-  const StyledMenu = withStyles({
-    paper: {
-      border: "1px solid #d3d4d5",
-    },
-  })((props) => (
-    <Menu
-      elevation={0}
-      getContentAnchorEl={null}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "center",
-      }}
-      {...props}
-    />
-  ));
-  const StyledMenuItem = withStyles((theme) => ({
-    root: {
-      "&:focus": {
-        backgroundColor: theme.palette.primary.main,
-        "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-          color: theme.palette.common.white,
-        },
-      },
-    },
-  }))(MenuItem);
   return (
     <div className='Game'>
       <div className='SudokuGrid'>
+        <div className='SudokuGrid__difficulty'>
+          <FormControl>
+            <Select
+              onChange={changeDifficulty}
+              variant='outlined'
+              value={difficulty}>
+              <MenuItem value={"Difficulty"}>Difficulty</MenuItem>
+              {DifficultyArr.map((item, index) => (
+                <MenuItem value={item} id={item} key={index}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
         <table id='grid' border='1'>
           {arr.map((item, index) => (
             <tr className='row' id={item}>
@@ -251,7 +296,7 @@ function SudokuGrid() {
               onClick={() => displayAnswer(grid)}>
               <ListItemText primary='Solve' />
             </StyledMenuItem>
-            <StyledMenuItem onClick={makeNewGrid}>
+            <StyledMenuItem onClick={() => makeNewGrid(difficulty)}>
               <ListItemText primary='New Grid' />
             </StyledMenuItem>
             <StyledMenuItem>
