@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./SudokuGrid.css";
-import { generateSudoku, solveSudoku } from "./AlgorithmsUtil";
+import { isValid, generateSudoku, solveSudoku } from "./AlgorithmsUtil";
 import Timer from "./Timer";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -102,6 +102,23 @@ function SudokuGrid() {
       default:
         break;
     }
+  };
+  const checkAnswer = (grid) => {
+    for (let i = 0; i < 9; i) {
+      for (let j = 0; j < 9; j++) {
+        if (isValid(grid, i, j, grid[i][j]) === false) {
+          console.log(isValid(grid, i, j, grid[i][j]));
+          console.log(i);
+          console.log(j);
+          console.log(grid[i][j]);
+          console.log(grid);
+          alert("Looks like you messed up, please try again!");
+          return;
+        }
+      }
+    }
+    alert("Well Done, looks like you solve it!");
+    return;
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -299,7 +316,7 @@ function SudokuGrid() {
             <StyledMenuItem onClick={() => makeNewGrid(difficulty)}>
               <ListItemText primary='New Grid' />
             </StyledMenuItem>
-            <StyledMenuItem>
+            <StyledMenuItem onClick={() => checkAnswer(grid)}>
               <ListItemText primary='Check' />
             </StyledMenuItem>
           </StyledMenu>

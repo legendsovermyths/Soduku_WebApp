@@ -33,7 +33,7 @@ const fillDiagonal = (SudokuGrid) => {
   }
   return SudokuGrid;
 };
-function isValid(board, row, col, k) {
+const isValid = (board, row, col, k) => {
   for (let i = 0; i < 9; i++) {
     const m = 3 * Math.floor(row / 3) + Math.floor(i / 3);
     const n = 3 * Math.floor(col / 3) + (i % 3);
@@ -42,7 +42,7 @@ function isValid(board, row, col, k) {
     }
   }
   return true;
-}
+};
 
 const sodokoSolver = function sodokoSolver(SudokuGrid) {
   for (let i = 0; i < 9; i++) {
@@ -86,4 +86,4 @@ const solveSudoku = (grid) => {
   sodokoSolver(grid);
   return grid;
 };
-export { generateSudoku, solveSudoku, sodokoSolver };
+export { isValid, generateSudoku, solveSudoku, sodokoSolver };
