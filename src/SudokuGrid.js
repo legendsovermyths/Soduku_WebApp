@@ -106,12 +106,12 @@ function SudokuGrid() {
   const checkAnswer = (grid) => {
     for (let i = 0; i < 9; i) {
       for (let j = 0; j < 9; j++) {
+        console.log(isValid(grid, i, j, grid[i][j]));
+        console.log(i);
+        console.log(j);
+        console.log(grid[i][j]);
+        console.log(grid);
         if (isValid(grid, i, j, grid[i][j]) === false) {
-          console.log(isValid(grid, i, j, grid[i][j]));
-          console.log(i);
-          console.log(j);
-          console.log(grid[i][j]);
-          console.log(grid);
           alert("Looks like you messed up, please try again!");
           return;
         }

@@ -21,7 +21,7 @@ function Navbar() {
             Play
           </Button>
         </Link>
-        <Link style={style}>
+        <Link to='./solve' style={style}>
           <Button variant='contained' color='primary' disableElevation>
             Solve
           </Button>
